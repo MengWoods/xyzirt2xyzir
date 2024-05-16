@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<launch>
+    <!-- Topic for subscribing to point cloud data --> 
+    <arg name="sub_pointcloud_topic" default="/input_point_cloud" />
+    <!-- Topic for publishing the point cloud -->
+    <arg name="pub_pointcloud_topic" default="/output_point_cloud" />
+    <!-- Verbose mode switch -->
+    <arg name="verbose" default="true" />
+
+    <!-- Node to run the Gim Pointcloud Classifier ROS -->
+    <node pkg="xyzirt2xyzir" type="xyzirt2xyzir_node" name="xyzirt2xyzir_node" output="screen" required="true">
+        <param name="sub_pointcloud_topic" value="$(arg sub_pointcloud_topic)" />
+        <param name="pub_pointcloud_topic" value="$(arg pub_pointcloud_topic)" />
+        <param name="verbose" value="$(arg verbose)" />
+    </node>
+</launch>
+
